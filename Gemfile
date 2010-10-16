@@ -6,7 +6,7 @@ gem "bson_ext"
 gem "mongoid", "2.0.0.beta.19"
 gem 'devise', '1.1.3'
 
-gem 'omnisocial', :path => :path => File.join(File.dirname(__FILE__), '/vendor/gems/omnisocial')
+gem 'omnisocial', :path => File.join(File.dirname(__FILE__), '/vendor/gems/omnisocial')
 gem "simple_form"
 gem "responders"
 gem "will_paginate", "3.0.pre2"

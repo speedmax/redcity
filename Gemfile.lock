@@ -1,3 +1,11 @@
+PATH
+  remote: vendor/gems/omnisocial
+  specs:
+    omnisocial (0.1.2)
+      bcrypt-ruby (~> 2.1)
+      oa-core (~> 0.1.2)
+      oa-oauth (~> 0.1.2)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -79,10 +87,6 @@ GEM
     oauth2 (0.0.13)
       faraday (~> 0.4.1)
       multi_json (>= 0.0.4)
-    omnisocial (0.1.2)
-      bcrypt-ruby (~> 2.1)
-      oa-core (~> 0.1.2)
-      oa-oauth (~> 0.1.2)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -144,7 +148,7 @@ DEPENDENCIES
   faker
   machinist_mongo
   mongoid (= 2.0.0.beta.19)
-  omnisocial
+  omnisocial!
   rails (= 3.0.0)
   responders
   rspec-rails (>= 2.0.0)
