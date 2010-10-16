@@ -21,7 +21,6 @@ test:
 
 # set these environment variables on your prod server
 production:
-  <<: *defaults
   host: flame.mongohq.com
   port: 27055
   username: app
