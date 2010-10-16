@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
   end
   
   def show
-    respond_with @message = Profile.find(params[:id])
+    respond_with @message = Message.find(params[:id])
   end
 
   def new

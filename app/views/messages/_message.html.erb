@@ -15,6 +15,7 @@
     	<%= link_to "view", "" %>
     	<%= link_to "reply", "" %>
     	<%= link_to "share", "" %>
+    	<%= link_to "delete", message, :method => :delete, :confirm => t(:delete_message_confirm) if message.profile == current_user%>
   	</small>
 	</div>
 	<br style="clear:both"/>

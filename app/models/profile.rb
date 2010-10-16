@@ -11,7 +11,7 @@ class Profile
   field :location_string
   field :about
 
-  references_one :login_account, :class_name => 'Omnisocial::LoginAccount', :dependent => :destroy
+  embeds_one :login_account, :class_name => 'Omnisocial::LoginAccount'
   references_many :messages, :dependent => :destroy
 
   delegate :login, :name, :picture_url, :account_url, :to => :login_account

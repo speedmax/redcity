@@ -9,7 +9,7 @@ module Omnisocial
     field :login
     field :picture_url
 
-    referenced_in :profile, :inverse_of => :login_account
+    embedded_in :profile, :inverse_of => :login_account
 
     def self.find_or_create_from_auth_hash(auth_hash)
       if account = self.first(:conditions => {:remote_account_id => auth_hash['uid']})
