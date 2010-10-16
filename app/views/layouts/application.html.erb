@@ -14,12 +14,17 @@
 		<%= javascript_include_tag 'jquery.embedly.min' %>
 	</head>
 	<body>
+	  <section id="flash">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    <% end %>
+	  </section>
 	  
     <header> 
       <section id="user">
         <% if current_user %>
           <%= image_tag(current_user.picture_url) %>
-          <%= current_user.name %>
+          <%= link_to current_user.name, profile_path(current_user) %>
           <%= link_to t(:logout), '/logout' %>
         <% else %>
           <%= link_to t(:login_signup), '/login' %>

@@ -1,0 +1,8 @@
+<h1>Edit your profile</h1>
+
+<%= simple_form_for @profile do |f| %>
+  <%= f.input :name %>
+  <%= f.input :interests, :hint => "Enter 6 - 12 your personal interests EX: rails, mongo, tdd, rspec" %>
+  <%= f.input :about, :as => :text %>
+  <%= f.button :submit %>
+<% end %>
