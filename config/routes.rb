@@ -9,5 +9,5 @@ Redcity::Application.routes.draw do
   match '/auth/failure'           => 'auth#failure'
   match '/logout'                 => 'auth#destroy',  :as => :logout
 
-  root :to => 'profiles#index'
+  root :to => 'messages#index'
 end
