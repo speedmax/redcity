@@ -1,1 +1,7 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("a").embedly({maxWidth: 400, wrapElement: 'div', method : "after" });
+	});
+</script>
+
 <%= render(:partial => "message", :collection => @messages) %>
