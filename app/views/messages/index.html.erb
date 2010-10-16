@@ -3,11 +3,13 @@
 
 <%= link_to :new_message, new_message_path, :onclick => "$('#new-message').toggle(); return false;" %>
 
-<div id="new-message" style="display: none">
-  <h2>Post a new update</h2>
-  <% @message = current_user.messages.build %>
-  <%= render :partial => 'form' %>
-</div>
+<% if current_user? %>
+  <div id="new-message" style="display: none">
+    <h2>Post a new update</h2>
+    <% @message = current_user.messages.build %>
+    <%= render :partial => 'form' %>
+  </div>
+<% end %>
 
 <ul>
 <%= render @messages %>
