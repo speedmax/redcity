@@ -1,5 +1,7 @@
-There are <%= @messages.size %> messages.
-<p/>
-<% for message in @messages %>
-	<%= message.content %> </br>
-<% end %>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("a").embedly({maxWidth: 400, wrapElement: 'div', method : "after" });
+	});
+</script>
+
+<%= render(:partial => "message", :collection => @messages) %>

@@ -1,0 +1,18 @@
+<h1>Profile: <%= current_user.name %></h1>
+
+<%= link_to "Update profile", edit_profile_path(current_user) %>
+
+<dl>
+  <dt>Location</dt>
+  <dd>
+    <%= current_user.location %>
+  </dd>
+  
+  <dt>Interests</dt>
+  <dd>
+    <%= current_user.interests %>
+  </dd>
+  
+  <dt>About</dt>
+  <dd><%= current_user.about %></dd>
+</dl>

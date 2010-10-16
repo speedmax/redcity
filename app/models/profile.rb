@@ -1,24 +1,18 @@
 class Profile
   include Mongoid::Document
-
+  include Mongoid::Timestamps
+  
   field :name
   field :email
   field :remember_token
   field :location
   field :about
   field :interests
+  field :has_setup
   
   references_one :login_account, :class_name => 'Omnisocial::LoginAccount'
   
   delegate :login, :name, :picture_url, :account_url, :to => :login_account
-
-  def to_param
-    if !self.login.include?('profile.php?')
-      "#{self.id}-#{self.login.gsub('.', '-')}"
-    else
-      self.id.to_s
-    end
-  end
 
   def from_twitter?
     login_account.kind_of? TwitterAccount

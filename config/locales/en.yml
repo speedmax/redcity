@@ -5,3 +5,4 @@ en:
   hello: "Hello world"
   login_signup: "Login or Sign up"
   logout: "Logout"
+  login_successfuly: 'You have logged in successfully.'
