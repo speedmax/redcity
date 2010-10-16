@@ -1,0 +1,7 @@
+<div class="follow-user">
+  <% if current_user.followed?(profile) %>
+    <%= link_to t("Unfollow"), unfollow_profile_path(profile) %>
+  <% else %>
+    <%= link_to t("Follow"), follow_profile_path(profile) %>
+  <% end %>
+</div>

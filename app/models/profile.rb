@@ -14,9 +14,12 @@ class Profile
 
   embeds_one :address
   embeds_one :login_account, :class_name => 'Omnisocial::LoginAccount'
-  references_many :messages, :dependent => :destroy
-
   delegate :login, :name, :picture_url, :account_url, :to => :login_account
+
+  references_many :followings, :stored_as => :array, :inverse_of => :followers, :class_name => 'Profile'
+  references_many :followers, :stored_as => :array, :inverse_of => :followings, :class_name => 'Profile'
+  references_many :following_cities, :stored_as => :array, :inverse_of => :followers, :class_name => 'City'  
+  references_many :messages, :dependent => :destroy
 
   def from_twitter?
     login_account.kind_of? TwitterAccount
@@ -37,6 +40,22 @@ class Profile
     update_attributes(:remember_token => nil) unless new_record?
   end
   
+  def followed?(user)
+    following_ids && following_ids.include?(user.id)
+  end
+  
+  def follow(user)
+    self.followings << user
+  end
+  
+  def unfollow(user)
+    if followed?(user)
+      self.following_ids = following_ids - [user.id]
+      user.follower_ids = follower_ids - [self.id]
+      self.save
+      user.save
+    end
+  end
   
   def interests_list 
     interests.join(', ') if interests

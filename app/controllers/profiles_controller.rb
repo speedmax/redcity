@@ -25,6 +25,20 @@ class ProfilesController < ApplicationController
     respond_with @profile = Profile.find(params[:id])
   end
 
+  # GET /profiles/1/follow
+  def follow
+    @profile = Profile.find(params[:id])
+    current_user.follow(@profile)
+    redirect_to @profile
+  end
+  
+  # GET /profiles/1/unfollow
+  def unfollow
+    @profile = Profile.find(params[:id])
+    current_user.unfollow(@profile)
+    redirect_to @profile
+  end
+
   # POST /profiles
   # POST /profiles.xml
   def create

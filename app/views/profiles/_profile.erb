@@ -1,4 +1,8 @@
 <li>
   <%= image_tag(profile.picture_url) %>
   <%= link_to profile.name, profile %>
+  
+  <% if current_user? && current_user != profile %>
+    <%= render 'follow', :profile => profile %>
+  <% end %>
 </li>

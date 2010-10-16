@@ -1,18 +1,31 @@
-<h1>Profile: <%= current_user.name %></h1>
+<h1>Profile: <%= @profile.name %></h1>
 
-<%= link_to "Update profile", edit_profile_path(current_user) %>
+<%= link_to t("Edit"), edit_profile_path(@profile) if current_user == @profile %>
 
+<% if current_user? && current_user != @profile %>
+  <%= render 'follow', :profile => @profile %>
+<% end %>
+
+<dl class="stats">
+  <dt>Followings</dt>
+  <dd><%= @profile.followings.count %></dd>
+  <dt>Followed cities</dt>
+  <dd><%= @profile.following_cities.count %></dd>
+  <dt>Followers</dt>
+  <dd><%= @profile.followers.count %></dd>
 <dl>
+
+<dl class="stats">
   <dt>Location</dt>
   <dd>
-    <%= current_user.location %>
+    <%= @profile.location %>
   </dd>
   
   <dt>Interests</dt>
   <dd>
-    <%= current_user.interests %>
+    <%= @profile.interests %>
   </dd>
   
   <dt>About</dt>
-  <dd><%= current_user.about %></dd>
+  <dd><%= @profile.about %></dd>
 </dl>

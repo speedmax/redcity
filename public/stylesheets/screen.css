@@ -88,3 +88,15 @@ li.activity .content {
 }
 
 /* Form styles */
+
+
+/*  Profiles  */
+ul.profiles div.follow-user {
+  float: right;
+}
+
+ul.profiles div.follow-user a {
+  font-size: bold;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+}

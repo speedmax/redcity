@@ -4,8 +4,12 @@ Redcity::Application.routes.draw do
   resources :cities
 
   resources :messages, :except => [:edit, :update]
-  resources :profiles
-  
+  resources :profiles do
+    member do
+      get :follow
+      get :unfollow
+    end
+  end
 
   # Account/Auth
   match '/login'                  => 'auth#new',      :as => :login
