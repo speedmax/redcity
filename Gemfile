@@ -10,7 +10,7 @@ gem 'omnisocial'
 gem "simple_form"
 gem "responders"
 
-gem "ruby-debug19", :group => [:test, :development]
+#gem "ruby-debug19", :group => [:test, :development]
 group :test do
   gem "rspec-rails", ">= 2.0.0"
 end
