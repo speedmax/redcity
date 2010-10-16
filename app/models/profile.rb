@@ -11,7 +11,7 @@ class Profile
   field :location_string
   field :about
 
-  references_one :login_account, :class_name => 'Omnisocial::LoginAccount', :dependent => :destroy
+  embeds_one :login_account, :class_name => 'Omnisocial::LoginAccount'
   references_many :messages, :dependent => :destroy
 
   delegate :login, :name, :picture_url, :account_url, :to => :login_account
@@ -35,7 +35,12 @@ class Profile
     update_attributes(:remember_token => nil) unless new_record?
   end
   
+  
+  def interests_list 
+    interests.join(', ') if interests
+  end
+  
   def interests=(string)
-    self[:interests] = string.split(',').map(&:trim).compact
+    self[:interests] = string.split(',').map(&:strip).compact
   end
 end

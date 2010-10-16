@@ -20,14 +20,8 @@
 	</head>
 
 	<body>
-	  
-	<!-- Rails Rumble sash! -->
-  <script type="text/javascript">
-    var rumbleUrl = 'http://railsrumble.com';
-  </script>
-  <script type="text/javascript" src="http://blog.railsrumble.com/javascripts/rumble-r10-sash.js"></script>
 
-
+  <div id="container">
 	  <section id="flash">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
@@ -62,7 +56,14 @@
       
       Red City Crew@Railsrumble
     </footer>
-    
+  </div>
+
+  	<!-- Rails Rumble sash! -->
+    <script type="text/javascript">
+      var rumbleUrl = 'http://railsrumble.com';
+    </script>
+    <script type="text/javascript" src="http://blog.railsrumble.com/javascripts/rumble-r10-sash.js"></script>
+
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 
 		<%= javascript_include_tag 'jquery.embedly.min', 'application' %>

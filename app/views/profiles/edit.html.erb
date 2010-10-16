@@ -4,7 +4,9 @@
 <%= simple_form_for @profile do |f| %>
   <%= f.input :name %>
   <%= f.input :location_string, :label => 'Location' %>
-  <%= f.input :interests, :hint => "Enter 6 - 12 your personal interests EX: rails, mongo, tdd, rspec" %>
+  <%= f.input :interests, 
+    :input_html => {:value => @profile.interests_list}, 
+    :hint => "Enter 6 - 12 your personal interests EX: rails, mongo, tdd, rspec" %>
   <%= f.input :about, :as => :text %>
   <%= f.input :setup, :as => :hidden, :value => true %>
   <%= f.button :submit %>

@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   include Responders::CollectionResponder
 
   respond_to :html, :json
-  require_user
+  require_user :only => [:new, :create]
   
   def index
     @messages = Message.desc(:created_at)
@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
   end
   
   def show
-    respond_with @message = Profile.find(params[:id])
+    respond_with @message = Message.find(params[:id])
   end
 
   def new
@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
   def create
     @message = current_user.messages.build(params[:message])
     @message.save
-    respond_with @message
+    respond_with @message, :location => messages_path
   end
     
   def destroy

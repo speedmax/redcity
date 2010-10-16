@@ -7,7 +7,8 @@ Omnisocial.setup do |config|
   # config.facebook 'APP_KEY', 'APP_SECRET', :scope => 'publish_stream'
   
   if Rails.env.production?
-
+    config.twitter 't1pBPuBzXzHSrWIfUGwvQ', 'eGtM2puiyBM39GFtmIUuo7QEM69hrUz57v9q0cTOI'
+    
     # Configs for production mode go here
     
   elsif Rails.env.development?

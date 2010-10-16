@@ -1,5 +1,6 @@
 <%= simple_form_for @message do |f| %>
-	<%= f.input :label, :as => :select, :collection => ["Job", "Share", "News", "Question", "Event", "Meetup"] %>
-  <%= f.input :content, :as => :text %>
+	<%= f.input :label, :as => :select, :prompt => '-- Please select a label --', :collection => ["Job", "Share", "News", "Question", "Event", "Meetup"] %>
+  <%= f.input :content, :as => :text, :input_html => {:rows => 3, :cols => 80 } %>
+  
   <%= f.button :submit %>
 <% end %>
