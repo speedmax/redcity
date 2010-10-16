@@ -2,7 +2,8 @@ class Message
   include Mongoid::Document
   include Mongoid::Timestamps
   
-  field :user_id, :type => Integer  
+  referenced_in :profile
+
   field :content
   field :location
   field :label

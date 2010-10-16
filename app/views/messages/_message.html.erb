@@ -1,3 +1,9 @@
-<div id="message">
-	<%= time_ago_in_words(message.created_at) %> ago: <%= message.label %>:  <%= auto_link(message.content) %> </br>	
-</div>
+<li class="activity">
+  <small style="border:1px solid #ccc; float:right"><%= message.label %></small>
+  
+  <%= image_tag message.profile.picture_url %>
+  <%= message.profile.name %>
+	
+	<%= auto_link(message.content) %> </br>	
+	<small><%= time_ago_in_words(message.created_at) %></small>
+</li>

@@ -9,10 +9,10 @@ module Omnisocial
     field :login
     field :picture_url
 
-    referenced_in :profile
+    referenced_in :profile, :inverse_of => :login_account
 
     def self.find_or_create_from_auth_hash(auth_hash)
-      if account = first(:conditions => {:first_name => auth_hash['uid']})
+      if account = self.first(:conditions => {:remote_account_id => auth_hash['uid']})
         account.assign_account_info(auth_hash)
         account.save
         account
@@ -22,7 +22,6 @@ module Omnisocial
     end
   
     def self.create_from_auth_hash(auth_hash)
-    
       account = self.new
       account.assign_account_info(auth_hash)
       account.save

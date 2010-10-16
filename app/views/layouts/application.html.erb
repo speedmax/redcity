@@ -9,9 +9,6 @@
     <%= stylesheet_link_tag :all %>
     <%= csrf_meta_tag %>
 		<meta name="viewport" content="initial-scale=1.0, width=device-width, maximum-scale=1.0"/>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-
-		<%= javascript_include_tag 'jquery.embedly.min' %>
 	</head>
 	<body>
 	  
@@ -40,6 +37,9 @@
       </section>
       
       <h1>RedCity</h1>
+      
+      <%= link_to t(:activities), '/messages' %> | 
+      <%= link_to t(:profiles), '/profiles' %>
     </header>
 
     <section id="hero">
@@ -53,5 +53,9 @@
       
       Red City Crew@Railsrumble
     </footer>
+    
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+		<%= javascript_include_tag 'jquery.embedly.min', 'application' %>
 	</body>
 </html>

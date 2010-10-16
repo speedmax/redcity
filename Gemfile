@@ -11,8 +11,10 @@ gem "simple_form"
 gem "responders"
 gem "will_paginate", "3.0.pre2"
 
-gem "ruby-debug19", :group => [:test, :development]
-group :test do
+group :test, :development do
+  gem "ruby-debug19"
   gem "rspec-rails", ">= 2.0.0"
-end
 
+  gem 'machinist_mongo', :require => 'machinist/mongoid'
+  gem "faker"
+end

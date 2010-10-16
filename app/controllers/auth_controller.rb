@@ -15,7 +15,13 @@ class AuthController < ApplicationController
     end
   
     self.current_user = account.find_or_create_user
-    redirect_back_or_default(root_path)
+    
+    if current_user.setup?
+      flash[:notice] = t(:setup_account)
+      redirect_to edit_profile_path(current_user)
+    else
+      redirect_back_or_default(root_path)
+    end
   end
 
   def failure
