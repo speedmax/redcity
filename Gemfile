@@ -14,13 +14,10 @@ gem 'omnisocial'
 gem "simple_form"
 gem "responders"
 
-<<<<<<< HEAD
 gem "ruby-debug19", :group => [:test, :development]
-=======
 group :test do
   gem "rspec-rails", ">= 2.0.0"
 end
->>>>>>> 571dddd57e633541da5e70f7d505313b7ed7d760
 
 # Use unicorn as the web server
 # gem 'unicorn'
