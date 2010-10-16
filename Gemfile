@@ -12,16 +12,7 @@ gem "bson_ext", "1.0.4"
 gem "simple_form"
 gem "responders"
 
-group :test do
-  gem "rspec-rails", ">= 2.0.0"
-end
-
-group :development do
-  gem "nifty-generators"
-end
-
-
-
+gem "ruby-debug19", :group => [:test, :development]
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -29,8 +20,6 @@ end
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-# gem 'ruby-debug'
 
 # Bundle the extra gems:
 # gem 'bj'

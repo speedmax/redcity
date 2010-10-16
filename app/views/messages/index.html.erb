@@ -1,0 +1,5 @@
+There are <%= @messages.size %> messages.
+<p/>
+<% for message in @messages %>
+	<%= message.content %> </br>
+<% end %>
