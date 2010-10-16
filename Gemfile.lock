@@ -1,5 +1,6 @@
-PATH
-  remote: vendor/gems/omnisocial
+GIT
+  remote: git://github.com/idealian/omnisocial.git
+  revision: faee12d396e1ba256894da13ce77dc289635a257
   specs:
     omnisocial (0.1.2)
       bcrypt-ruby (~> 2.1)
