@@ -2,11 +2,14 @@
 
 body {
 	color: rgb(60,60,60);
-	padding: 0 36px 0;
+	-webkit-tap-highlight-color: rgb(255,255,158);
+}
+
+#container {
+  padding: 0 36px 0;
 	width: 768px;
 	position: relative;
 	margin: 0 auto;
-	-webkit-tap-highlight-color: rgb(255,255,158);
 }
 
 header h1 {

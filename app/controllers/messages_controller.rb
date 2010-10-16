@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   include Responders::CollectionResponder
 
   respond_to :html, :json
-  require_user
+  require_user :only => [:new, :create]
   
   def index
     @messages = Message.desc(:created_at)
