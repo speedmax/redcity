@@ -14,7 +14,7 @@ class AuthController < ApplicationController
         Omnisocial::FacebookAccount.find_or_create_from_auth_hash(request.env['rack.auth'])
     end
   
-    self.current_user = account.find_or_create_user
+    self.current_user = account
     
     if !current_user.setup?
       flash[:notice] = t(:setup_account)

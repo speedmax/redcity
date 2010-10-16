@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
   def create
     @message = current_user.messages.build(params[:message])
     @message.save
-    respond_with @message
+    respond_with @message, :location => messages_path
   end
     
   def destroy
