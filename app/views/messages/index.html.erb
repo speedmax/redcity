@@ -1,7 +1,7 @@
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("a").embedly({maxWidth: 400, wrapElement: 'div', method : "after" });
-	});
-</script>
 
-<%= render(:partial => "message", :collection => @messages) %>
+<h1><%= t :activity_stream %></h1>
+<%= link_to :new_message, new_message_path %>
+
+<ul>
+<%= render @messages %>
+</ul>

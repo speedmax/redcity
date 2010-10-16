@@ -1,7 +1,6 @@
 @import url(less.css);
 
 body {
-	background: rgb(232,232,232);
 	color: rgb(60,60,60);
 	padding: 0 36px 0;
 	width: 768px;
@@ -18,8 +17,13 @@ header h1 {
   font-size: 1.6em;
 }
 
+
+.large, h2 {
+  font-size: 1.3em;
+}
+
 #user {
-  width: 300px;
+  width: 200px;
   float: right;
 }
 
@@ -29,4 +33,5 @@ header h1 {
 
 #flash div {
   background: #eee;
+  border: 1px solid #ccc;
 }

@@ -1,5 +1,8 @@
 class MessagesController < ApplicationController
+  include Responders::CollectionResponder
+
   respond_to :html, :json
+  require_user
   
   def index
     @messages = Message.desc(:created_at)
@@ -11,12 +14,11 @@ class MessagesController < ApplicationController
   end
 
   def new
-    respond_with @message = Message.new
+    respond_with @message = current_user.messages.new
   end
     
   def create
-    @message = Message.new(params[:message])
-    @message.created_at = Time.now
+    @message = current_user.messages.build(params[:message])
     @message.save
     respond_with @message
   end
