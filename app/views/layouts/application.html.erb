@@ -13,18 +13,30 @@
 	</head>
 	<body>
 	  
-	  <div id="container">
-	    <div id="header">
-	      <h1>RedCity</h1>
-	    </div>
+    <header> 
+      <section id="user">
+        <% if current_user %>
+          <%= image_tag(current_user.picture_url) %>
+          <%= current_user.name %>
+          <%= link_to t(:logout), '/logout' %>
+        <% else %>
+          <%= link_to t(:login_signup), '/login' %>
+        <% end %>
+      </section>
+      
+      <h1>RedCity</h1>
+    </header>
 
-      <div id="hero">
-      </div>
-
-      <div id="content">
-        <%= yield %>
-      </div>
+    <section id="hero">
+    </section>
     
-    </div>
+    <section id="content">
+      <%= yield %>
+    </section>
+    <footer>
+      <hr/>
+      
+      Red City Crew@Railsrumble
+    </footer>
 	</body>
 </html>

@@ -1,5 +1,16 @@
-@import url(less.css)
+@import url(less.css);
 
-h1 {
-  
+body {
+	background: rgb(232,232,232);
+	color: rgb(60,60,60);
+	padding: 60px 36px 0;
+	width: 696px;
+	position: relative;
+	margin: 0 auto;
+	-webkit-tap-highlight-color: rgb(255,255,158);
+}
+
+#user {
+  width: 300px;
+  float: right;
 }
