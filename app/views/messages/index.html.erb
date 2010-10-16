@@ -1,9 +1,9 @@
 
 <h1><%= t :activity_stream %></h1>
 
-<%= link_to :new_message, new_message_path, :onclick => "$('#new-message').toggle(); return false;" %>
-
 <% if current_user? %>
+  <%= link_to :new_message, new_message_path, :onclick => "$('#new-message').toggle(); return false;" %>
+
   <div id="new-message" style="display: none">
     <h2>Post a new update</h2>
     <% @message = current_user.messages.build %>

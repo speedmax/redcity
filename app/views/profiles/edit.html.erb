@@ -8,6 +8,16 @@
     :input_html => {:value => @profile.interests_list}, 
     :hint => "Enter 6 - 12 your personal interests EX: rails, mongo, tdd, rspec" %>
   <%= f.input :about, :as => :text %>
+  
+  <%= f.input :type, :collection => %w(Individual Organization) %>
+  
+  <%= f.simple_fields_for @profile.build_address do |form| %>
+    <%= form.input :street %>
+    <%= form.input :city %>
+    <%= form.input :state %>
+    <%= form.input :post_code %>
+  <% end %>
+  
   <%= f.input :setup, :as => :hidden, :value => true %>
   <%= f.button :submit %>
 <% end %>

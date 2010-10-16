@@ -3,14 +3,16 @@ class Profile
   include Mongoid::Timestamps
   
   field :name
+  field :type
   field :email
   field :interests, :type => Array
   field :setup,     :type => Boolean
   field :remember_token
-  field :location
+  field :location,  :type => Array
   field :location_string
   field :about
 
+  embeds_one :address
   embeds_one :login_account, :class_name => 'Omnisocial::LoginAccount'
   references_many :messages, :dependent => :destroy
 

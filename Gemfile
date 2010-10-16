@@ -10,7 +10,8 @@ gem "omnisocial", :git => 'git://github.com/idealian/omnisocial.git'
 gem "simple_form"
 gem "responders"
 gem "will_paginate", "3.0.pre2"
-gem 'jquery-rails'
+gem "jquery-rails"
+gem "graticule"
 
 #gem "ruby-debug19", :group => [:test, :development]
 

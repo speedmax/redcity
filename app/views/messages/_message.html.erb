@@ -6,7 +6,7 @@
   </div>
   
   <div class="content">
-    <h5><%= message.profile.name %></h5>
+    <h5><%= link_to message.profile.name, message.profile %></h5>
 	
   	<%= auto_link(message.content) %> </br>	
   	<small>

@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-  include Responders::CollectionResponder
 
   respond_to :html, :json
   require_user :only => [:new, :create]
@@ -26,6 +25,6 @@ class MessagesController < ApplicationController
   def destroy
     @message = Message.find(params[:id])
     @message.destroy
-    respond_with @message
+    respond_with @message, :location => messages_path
   end
 end
