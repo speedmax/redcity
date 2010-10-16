@@ -1,4 +1,8 @@
 Redcity::Application.routes.draw do
+  resources :countries
+
+  resources :cities
+
   resources :messages, :except => [:edit, :update]
   resources :profiles
   
