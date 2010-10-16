@@ -35,6 +35,11 @@ class Profile
     update_attributes(:remember_token => nil) unless new_record?
   end
   
+  
+  def interests_list 
+    interests.join(', ') if interests
+  end
+  
   def interests=(string)
     self[:interests] = string.split(',').map(&:strip).compact
   end
