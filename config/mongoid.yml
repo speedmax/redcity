@@ -1,0 +1,28 @@
+defaults: &defaults
+  host: flame.mongohq.com
+  port: 27057
+  username: app
+  password: secret
+  database: redcity
+  # slaves:
+  #   - host: slave1.local
+  #     port: 27018
+  #   - host: slave2.local
+  #     port: 27019
+
+development:
+  <<: *defaults
+  database: redcity-development
+
+test:
+  <<: *defaults
+  database: redcity_test
+
+# set these environment variables on your prod server
+production:
+  <<: *defaults
+  host: <%= ENV['MONGOID_HOST'] %>
+  port: <%= ENV['MONGOID_PORT'] %>
+  username: <%= ENV['MONGOID_USERNAME'] %>
+  password: <%= ENV['MONGOID_PASSWORD'] %>
+  database: <%= ENV['MONGOID_DATABASE'] %>
