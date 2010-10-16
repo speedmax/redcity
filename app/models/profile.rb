@@ -36,6 +36,6 @@ class Profile
   end
   
   def interests=(string)
-    self[:interests] = string.split(',').map(&:trim).compact
+    self[:interests] = string.split(',').map(&:strip).compact
   end
 end

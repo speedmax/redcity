@@ -16,7 +16,7 @@ class AuthController < ApplicationController
   
     self.current_user = account.find_or_create_user
     
-    if current_user.setup?
+    if !current_user.setup?
       flash[:notice] = t(:setup_account)
       redirect_to edit_profile_path(current_user)
     else

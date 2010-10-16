@@ -3,6 +3,7 @@
 body {
 	color: rgb(60,60,60);
 	-webkit-tap-highlight-color: rgb(255,255,158);
+	padding: 0;
 }
 
 #container {
@@ -38,3 +39,52 @@ header h1 {
   background: #eee;
   border: 1px solid #ccc;
 }
+
+
+/*    Activity stream   */
+
+
+li.activity {
+  list-style: none;
+  border-bottom: 1px solid #ccc;
+  margin: 0;
+  padding: 10px 0;
+}
+
+li.activity:last-child {
+  border: 0;
+}
+
+li.activity .label {
+  border:1px solid #ccc; 
+  float:right;
+  text-align: center;
+  padding: 2px 5px;
+}
+
+li.activity .thumb {
+  width: 70px;
+  float: left;
+}
+
+li.activity .content {
+  float: left;
+  width: 600px;
+}
+
+#new-message {
+  border: 1px solid #ccc;
+  margin: ;
+  padding: 10px 20px;
+  background: #e6f3f8;
+  margin: 20px;
+}
+
+#new-message h2 {
+  margin: 0;
+}
+#new-message label {
+  display: none;
+}
+
+/* Form styles */

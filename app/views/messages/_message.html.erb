@@ -1,9 +1,21 @@
 <li class="activity">
-  <small style="border:1px solid #ccc; float:right"><%= message.label %></small>
+  <small class="label"><%= message.label %></small>
+
+  <div class="thumb">
+    <%= image_tag message.profile.picture_url %>
+  </div>
   
-  <%= image_tag message.profile.picture_url %>
-  <%= message.profile.name %>
+  <div class="content">
+    <h5><%= message.profile.name %></h5>
 	
-	<%= auto_link(message.content) %> </br>	
-	<small><%= time_ago_in_words(message.created_at) %></small>
+  	<%= auto_link(message.content) %> </br>	
+  	<small>
+  	  <%= time_ago_in_words(message.created_at) %>
+  	  
+    	<%= link_to "view", "" %>
+    	<%= link_to "reply", "" %>
+    	<%= link_to "share", "" %>
+  	</small>
+	</div>
+	<br style="clear:both"/>
 </li>

@@ -6,3 +6,7 @@ en:
   login_signup: "Login or Sign up"
   logout: "Logout"
   login_successfuly: 'You have logged in successfully.'
+  activities: "Activities"
+  profiles: "Profiles"
+  activity_stream: "Activity Stream"
+  new_message: "Post a update"

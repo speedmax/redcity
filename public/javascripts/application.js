@@ -17,7 +17,9 @@ $('li.activity a').each(function() {
 
 $('li.activity a.expandable').live('click', function () {
   if (!$(this).hasClass('expanded')) {
-    $(this).prev().embedly({maxWidth: 400, wrapElement: 'div', method : "after" });
+    $(this).prev().embedly({maxWidth: 500, wrapElement: 'div', method : "after" });
   }
-  $(this).addClass('expanded')
+  $(this).addClass('expanded');
+  
+  return false;
 })
