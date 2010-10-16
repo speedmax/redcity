@@ -7,8 +7,12 @@ share information, interests, attend events
 
 
 Internationalisation
-===
+---
 
 http://guides.rubyonrails.org/i18n.html
 http://github.com/svenfuchs/rails-i18n/tree/master/rails/locale
 http://github.com/plataformatec/responders
+
+
+Social credential
+---
