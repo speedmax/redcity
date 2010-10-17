@@ -23,3 +23,78 @@ $('li.activity a.expandable').live('click', function () {
   
   return false;
 })
+
+var redcity = {
+  render_message: function (e) {
+    if (!this.location) return;
+    var loc = this['location'];
+    var position = new google.maps.LatLng(loc[1], loc[0]);
+    var infowindow = new google.maps.InfoWindow({content: this.content});
+    var marker = new google.maps.Marker({
+        icon: '/images/green_pin.png',
+        position: position,
+        map: window.current_map,
+        title: this.content
+    });
+    
+    google.maps.event.addListener(marker, 'click', function() {
+      infowindow.open(window.current_map, marker);
+    });
+    
+    $('#activity-list').append(
+      $('<li>').html( 
+        "<a href=''>" + this.content + "</a>"
+      )
+    )
+  },
+  
+  render_user: function (e) {
+    if (!this.location) return;
+    var loc = this['location'];
+    var position = new google.maps.LatLng(loc[1], loc[0]);
+
+    var infowindow = new google.maps.InfoWindow({
+        content: this.content
+    });
+    var marker = new google.maps.Marker({
+        icon: '/images/red_pin.png',
+        position: position,
+        map: window.current_map,
+        title: this.name
+    });
+    google.maps.event.addListener(marker, 'click', function() {
+      infowindow.open(window.current_map, marker);
+    });
+    $('#user-list').append(
+      $('<li>').html( 
+        "<a href=''>" + this.name + "</a>"
+      )
+    )
+  },
+  
+  render_organization: function (e) {
+    if (!this.location) return;
+    var loc = this['location'];
+    var position = new google.maps.LatLng(loc[1], loc[0]);
+
+    var infowindow = new google.maps.InfoWindow({
+        content: this.content
+    });
+    var marker = new google.maps.Marker({
+        icon: '/images/blue_pin.png',
+        position: position,
+        map: window.current_map,
+        title: this.name
+    });
+    google.maps.event.addListener(marker, 'click', function() {
+      infowindow.open(window.current_map, marker);
+    });
+    $('#organization-list').append(
+      $('<li>').html( 
+        "<a href=''>" + this.name + "</a>"
+      )
+    )
+  }
+}
+
+

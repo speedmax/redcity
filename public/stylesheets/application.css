@@ -1,10 +1,18 @@
+body {
+  margin:0;
+  padding:0;
+}
+h1.logo {
+  margin-top:0 !important;
+}
 #user {
-  width: 200px;
+  width: 200px;s
   float: right;
 }
 
 #flash {
-  height: 50px;
+  height: 30px;
+  margin: 0;
 }
 
 #flash div {
@@ -20,4 +28,9 @@ a.expandable {
 
 a.expandable:hover {
   color: #f13e3e;
+}
+
+#activity-list a {
+  line-height: 12px !important;
+  margin: 10px 0;
 }

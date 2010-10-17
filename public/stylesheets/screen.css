@@ -210,10 +210,34 @@ h3 {
   padding-left: 4px;
   padding-bottom: 20px;
 }
+#header #breadcrumbs a {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+  *display: inline;
+  background: url(../images/breadcrumbs.png) no-repeat;
+  padding: 0 15px 0 25px;
+  line-height: 30px;
+  color: #88a0bf;
+  background-position: -48px -4px;
+}
+#header #breadcrumbs a:hover, #header #breadcrumbs a.active {
+  color: white;
+  text-decoration: none;
+}
+#header #breadcrumbs a.world {
+  background-position: 12px -3px;
+  padding: 0 15px;
+}
+#header #breadcrumbs a.world:hover, #header #breadcrumbs a.world.active {
+  background-position: 12px -52px;
+}
 
 #menu {
   background-color: #0b428c;
   border-top: 1px solid #4171af;
+  background: url(../images/menu_gradient.jpg);
 }
 #menu li {
   display: -moz-inline-stack;
@@ -383,15 +407,11 @@ h3 {
   border-radius: 0 0 15px 15px;
   font-weight: bold;
 }
-#content a.action, #content a.comments, #content a.share, #content a.fav {
+#content a.comments, #content a.share, #content a.fav {
   color: #6a6a6a;
   padding-left: 22px;
   margin-right: 25px;
   background: url(../images/comment-icons.png) no-repeat 0 2px;
-}
-
-#content a.action  {
-  background: none;
 }
 #content a.share {
   background-position: 0 -31px;
@@ -463,6 +483,55 @@ h3 {
   line-height: 20px;
   padding: 15px 20px 25px 35px;
 }
+#sidebar .person {
+  padding: 15px;
+}
+#sidebar .person img {
+  float: left;
+  padding: 3px;
+  border: 1px solid #cccccc;
+  margin-right: 5px;
+}
+#sidebar .person h5 {
+  font-size: 18px;
+  color: #373737;
+}
+#sidebar .person p {
+  padding: 0;
+}
+#sidebar .person p span {
+  font-size: 12px;
+}
+#sidebar .person p.loc {
+  color: #373737;
+}
+#sidebar .person .web a {
+  color: #28518a;
+}
+#sidebar .person a.settins {
+  color: #4c4c4c;
+  text-indent: 35px;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+  *display: inline;
+  width: 97px;
+  line-height: 25px;
+  background: url(../images/settings-btn.png);
+  text-decoration: none;
+  margin-top: 5px;
+}
+#sidebar .person a.settins:hover {
+  text-decoration: none;
+}
+#sidebar ul.follow li {
+  padding-left: 35px;
+}
+#sidebar ul.follow li span {
+  color: #f6403f;
+  font-weight: bold;
+}
 
 #footer {
   padding: 40px 10px;
@@ -500,4 +569,204 @@ h3 {
   *display: inline;
   line-height: 23px;
   margin-top: -6px;
+}
+
+#user_controls {
+  float: right;
+}
+#user_controls img, #user_controls p {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+  *display: inline;
+}
+#user_controls img {
+  margin-right: 6px;
+  border: 1px solid #cccccc;
+}
+#user_controls p {
+  color: #575757;
+  font-size: 12px;
+  line-height: 16px;
+}
+#user_controls p strong {
+  font-weight: bold;
+}
+#user_controls p a {
+  color: #575757;
+  font-size: 11px;
+}
+#user_controls p a:hover {
+  color: #f03d3d;
+  text-decoration: none;
+}
+
+#main-nav {
+  float: right;
+  clear: right;
+  margin-right: 40px;
+  margin-top: 35px;
+}
+#main-nav a {
+  font-size: 18px;
+  color: #606060;
+  margin-left: 10px;
+  font-family: MyriadProRegular;
+}
+
+#searchForm {
+  position: absolute;
+  right: 25px;
+  top: 50px;
+  background: #154e99;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  padding: 5px 7px;
+}
+#searchForm label {
+  line-height: 27px;
+}
+#searchForm input[type=text] {
+  border: 0;
+  background: white url(../images/loupe.png) 165px 50% no-repeat;
+  padding: 5px;
+  width: 170px;
+  height: 17px;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+  *display: inline;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+
+h2.grey {
+  color: #373737;
+  font-weight: bold;
+}
+
+#edit {
+  width: 515px;
+}
+#edit fieldset {
+  padding-bottom: 10px;
+}
+#edit label {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #7a7a7a;
+  width: 515px;
+  text-align: right;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+  *display: inline;
+}
+#edit label textarea, #edit label input[type=text] {
+  width: 360px;
+  padding: 5px 10px;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+  *display: inline;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  color: #939393;
+  font-size: 14px;
+  font-family: arial, verdana, sans-serif;
+  margin-left: 5px;
+}
+#edit label input[type=text] {
+  vertical-align: middle;
+  height: 20px;
+}
+#edit label textarea {
+  max-width: 360px;
+  height: 105px;
+}
+#edit label span {
+  color: #f03d3d;
+}
+#edit p {
+  font-size: 12px;
+  color: #989898;
+  font-style: italic;
+  padding: 5px 0 0 135px;
+}
+#edit p .info-icon {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+  *display: inline;
+  background: url(../images/info.png) no-repeat;
+  width: 13px;
+  height: 13px;
+}
+#edit input[type=submit] {
+  background: #0c438d;
+  color: white;
+  line-height: 38px;
+  border: 0;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+  *display: inline;
+  height: 38px;
+  vertical-align: middle;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  padding: 0 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+#edit input[type=submit]:hover {
+  text-decoration: underline;
+}
+#edit span.selectbox {
+  background: #e5e5e5;
+  line-height: 38px;
+  color: #5a5a5a;
+  font-size: 14px;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+  *display: inline;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  padding-left: 20px;
+  padding-right: 10px;
+}
+#edit span.selectbox select {
+  width: 203px;
+}
+
+.ta-right {
+  text-align: right;
+}
+
+#main .no-padding {
+  padding: 0;
+  width: 746px;
+}
+#main .no-padding #submenu {
+  margin: 0;
 }

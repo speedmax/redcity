@@ -15,23 +15,15 @@
         myOptions);
 
     $.getJSON('/messages.json', function(results) {
-
-      $.each(results, function (e) {
-        if (!this.location) return;
-        console.log(this)
-        
-        var loc = this['location'];
-        var position = new google.maps.LatLng(loc[1], loc[0]);
-
-        var infowindow = new google.maps.InfoWindow({
-            content: this.content
-        });
-        var marker = new google.maps.Marker({
-            position: position,
-            map: window.current_map,
-            title: this.content
-        });
-      })
+      $.each(results, redcity.render_message)
+    });
+    
+    $.getJSON('/profiles.json?only=individual', function(results) {
+      $.each(results, redcity.render_user)
+    });
+    
+    $.getJSON('/profiles.json?only=organization', function(results) {
+      $.each(results, redcity.render_organization)
     });
   }
   initialize();
@@ -44,5 +36,17 @@
   <h3>Top cities</h3>
   <ul class="city-list">
     <%= render City.desc(:users_count).limit(10) %>
+  </ul>
+  
+  <h3>Activities</h3>
+  <ul id="activity-list" class="users">
+  </ul>
+  
+  <h3>Users</h3>
+  <ul id="user-list" class="users">
+  </ul>
+  
+  <h3>Organization</h3>
+  <ul id="organization-list" class="users">
   </ul>
 <% end %>
