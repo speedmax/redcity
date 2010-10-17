@@ -1,4 +1,5 @@
 defaults: &defaults
+  host: localhost
   database: redcity
   # slaves:
   #   - host: slave1.local
@@ -8,10 +9,12 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  host: flame.mongohq.com
-  port: 27057
-  username: app
-  password: secret
+  # host: flame.mongohq.com
+  # host: flame.mongohq.com
+  # port: 27057
+  # username: app
+  # password: secret
+  port: 27017
   database: redcity-development
 
 test:
@@ -21,11 +24,12 @@ test:
 
 # set these environment variables on your prod server
 production:
-  host: flame.mongohq.com
-  port: 27055
-  username: app
-  password: secret
-  database: redcity  
+  database: redcity-development
+  # host: flame.mongohq.com
+  # port: 27055
+  # username: app
+  # password: secret
+  # database: redcity  
   
   # host: <%= ENV['MONGOID_HOST'] %>
   # port: <%= ENV['MONGOID_PORT'] %>

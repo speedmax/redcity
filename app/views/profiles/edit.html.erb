@@ -3,7 +3,7 @@
 <% @profile.setup = true %>
 <%= simple_form_for @profile do |f| %>
   <%= f.input :name %>
-  <%= f.input :location_string, :label => 'Location' %>
+  <%= f.input :location_string, :label => 'Location', :hint => 'Where are you?' %>
   <%= f.input :interests, 
     :input_html => {:value => @profile.interests_list}, 
     :hint => "Enter 6 - 12 your personal interests EX: rails, mongo, tdd, rspec" %>
@@ -11,12 +11,12 @@
   
   <%= f.input :type, :collection => %w(Individual Organization) %>
   
-  <%= f.simple_fields_for @profile.build_address do |form| %>
+  <!-- <%= f.simple_fields_for @profile.build_address do |form| %>
     <%= form.input :street %>
     <%= form.input :city %>
     <%= form.input :state %>
     <%= form.input :post_code %>
-  <% end %>
+  <% end %> -->
   
   <%= f.input :setup, :as => :hidden, :value => true %>
   <%= f.button :submit %>

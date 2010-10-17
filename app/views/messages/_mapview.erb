@@ -1,0 +1,21 @@
+<%= render 'shared/map' %>
+<script type="text/javascript">
+  function initialize() {
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var myOptions = {
+      zoom: 8,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map_canvas"),
+        myOptions);
+  }
+  initialize();
+</script>
+
+<% sidebar do %>
+  <h3>Top cities</h3>
+  <ul>
+    <%= render City.desc(:users_count).limit(10) %>
+  </ul>
+<% end %>

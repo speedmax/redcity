@@ -1,0 +1,19 @@
+
+<div class="header">
+
+<%= @message.profile.name %> posted:
+<ul>
+  <%= render @message %>  
+</ul>
+</div>
+
+<div id="reply">
+  <div id="new-message" class="reply">
+    <h2>Reply</h2>
+    <% @message = current_user.messages.build(:reply_to => @message) %>
+    <%= render 'messages/form' %>
+  </div>
+  
+  <ul class="replies">
+  </ul>
+</div>

@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.xml
   def show
-    respond_with @profile = Profile.find(params[:id])
+    respond_with @profile = Profile.where(:slug => params[:id]).first
   end
 
   # GET /profiles/new
@@ -22,19 +22,19 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
-    respond_with @profile = Profile.find(params[:id])
+    respond_with @profile = Profile.where(:slug => params[:id]).first
   end
 
   # GET /profiles/1/follow
   def follow
-    @profile = Profile.find(params[:id])
+    @profile = Profile.where(:slug => params[:id]).first
     current_user.follow(@profile)
     redirect_to @profile
   end
   
   # GET /profiles/1/unfollow
   def unfollow
-    @profile = Profile.find(params[:id])
+    @profile = Profile.where(:slug => params[:id]).first
     current_user.unfollow(@profile)
     redirect_to @profile
   end
@@ -50,7 +50,7 @@ class ProfilesController < ApplicationController
   # PUT /profiles/1
   # PUT /profiles/1.xml
   def update
-    @profile = Profile.find(params[:id])
+    @profile = Profile.where(:slug => params[:id]).first
     @profile.update_attributes(params[:profile])
     respond_with @profile
   end
@@ -58,7 +58,7 @@ class ProfilesController < ApplicationController
   # DELETE /profiles/1
   # DELETE /profiles/1.xml
   def destroy
-    @profile = Profile.find(params[:id])
+    @profile = Profile.where(:slug => params[:id]).first
     @profile.destroy
     respond_with @profile
   end

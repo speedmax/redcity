@@ -12,9 +12,7 @@
   	<small>
   	  <%= time_ago_in_words(message.created_at) %>
   	  
-    	<%= link_to t("view"), "" %>
-    	<%= link_to t("reply"), "" %>
-    	<%= link_to t("share"), "" %>
+    	<%= link_to t("reply"), message_path(message), :anchor => '#reply'%>
     	
     	<% if message.profile == current_user %>
     	  <%= link_to t("delete"), message, :method => :delete, :confirm => t(:delete_message_confirm) %>

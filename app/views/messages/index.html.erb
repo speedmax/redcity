@@ -1,16 +1,19 @@
+<% if map_view? %>
+  <%= render 'mapview' %>
+<% else %>
+  <h1><%= t :activity_stream %></h1>
+  
+  <% if current_user? %>
+    <%= link_to :new_message, new_message_path, :onclick => "$('#new-message').toggle(); return false;" %>
 
-<h1><%= t :activity_stream %></h1>
+    <div id="new-message" style="display: none">
+      <h2>Post a new update</h2>
+      <% @message = current_user.messages.build %>
+      <%= render :partial => 'form' %>
+    </div>
+  <% end %>
 
-<% if current_user? %>
-  <%= link_to :new_message, new_message_path, :onclick => "$('#new-message').toggle(); return false;" %>
-
-  <div id="new-message" style="display: none">
-    <h2>Post a new update</h2>
-    <% @message = current_user.messages.build %>
-    <%= render :partial => 'form' %>
-  </div>
+  <ul class="activities">
+    <%= render @messages %>
+  </ul>
 <% end %>
-
-<ul class="activities">
-<%= render @messages %>
-</ul>

@@ -9,7 +9,7 @@ class CountriesController < ApplicationController
   # GET /countries/1
   # GET /countries/1.xml
   def show
-    @country = Country.find(params[:id])
+    @country = Country.where(:code => params[:id].upcase).first
     respond_with(@country)
   end
 

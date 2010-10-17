@@ -1,31 +1,46 @@
-<h1>Profile: <%= @profile.name %></h1>
 
-<%= link_to t("Edit"), edit_profile_path(@profile) if current_user == @profile %>
+<div class="profile">
+  <div class="thumb">
+    <%= image_tag @profile.picture_url %>
+  </div>
+  
+  <h1><%= @profile.name %> (<%= @profile.slug %>)</h1>
+  <p><%= @profile.location_string %></p>
 
-<% if current_user? && current_user != @profile %>
-  <%= render 'follow', :profile => @profile %>
+  <% if current_user? && current_user != @profile %>
+    <%= render 'follow', :profile => @profile %>
+  <% end %>
+</div>
+
+<ul class="activities">
+  <%= render @profile.messages.paginate(:page => params[:page]) %>
+</ul>
+
+<% sidebar do %>
+  <%= link_to t("Settings"), edit_profile_path(@profile) if current_user == @profile %>
+
+  <dl class="stats">
+    <dt>Followings</dt>
+    <dd><%= @profile.followings.count %></dd>
+    <dt>Followed cities</dt>
+    <dd><%= @profile.following_cities.count %></dd>
+    <dt>Followers</dt>
+    <dd><%= @profile.followers.count %></dd>
+  <dl>
+
+  <dl class="stats">
+    <dt>Location</dt>
+    <dd>
+      <%= @profile.location %>
+    </dd>
+  
+    <dt>Interests</dt>
+    <dd>
+      <%= @profile.interests %>
+    </dd>
+  
+    <dt>About</dt>
+    <dd><%= @profile.about %></dd>
+  </dl>
+  
 <% end %>
-
-<dl class="stats">
-  <dt>Followings</dt>
-  <dd><%= @profile.followings.count %></dd>
-  <dt>Followed cities</dt>
-  <dd><%= @profile.following_cities.count %></dd>
-  <dt>Followers</dt>
-  <dd><%= @profile.followers.count %></dd>
-<dl>
-
-<dl class="stats">
-  <dt>Location</dt>
-  <dd>
-    <%= @profile.location %>
-  </dd>
-  
-  <dt>Interests</dt>
-  <dd>
-    <%= @profile.interests %>
-  </dd>
-  
-  <dt>About</dt>
-  <dd><%= @profile.about %></dd>
-</dl>

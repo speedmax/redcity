@@ -1,6 +1,16 @@
-<p id="notice"><%= notice %></p>
+<% if map_view? %>
+  <%= render 'mapview' %>
+<% else %>
+  <h2>Country: <%= @country.name %></h2>
 
-<%= render "map" %>
+  <%= link_to 'Edit', edit_country_path(@country) %> |
+  <%= link_to 'Back', countries_path %>
 
-<%= link_to 'Edit', edit_country_path(@country) %> |
-<%= link_to 'Back', countries_path %>
+
+  <% sidebar do %>
+    <h3>Cities</h3>
+    <ul>
+      <%= render @country.cities, :country => @country %>
+    </ul>
+  <% end %>
+<% end %>

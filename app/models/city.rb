@@ -2,8 +2,25 @@ class City
   include Mongoid::Document
 
   field :name
-  field :location
+  field :region
+  field :location,    :type => Array
+  field :timezone
+  field :users_count, :type => Integer, :default => 0
+  field :slug
+  
+  index :users_count
+  index [[ :location, Mongo::GEO2D ]]
   
   referenced_in :country
   references_many :followers, :stored_as => :array, :inverse_of => :followings, :class_name => 'Profile'
+  
+  before_save :generate_slug
+  
+  def generate_slug
+    self.slug = self.name.parameterize
+  end
+  
+  def to_param
+    self.slug
+  end
 end

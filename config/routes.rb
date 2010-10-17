@@ -11,6 +11,12 @@ Redcity::Application.routes.draw do
     end
   end
 
+  match '/:country_id/:id' => 'cities#show', :as => :city, 
+    :constraints => { :country_id => /[a-z]{2}/, :id => /.+/ }
+    # country city dispatch
+  match '/:id' => 'countries#show', :as => :country,
+    :constraints => { :id => /[a-z]{2}/ }
+
   # Account/Auth
   match '/login'                  => 'auth#new',      :as => :login
   match '/auth/:service/callback' => 'auth#callback'

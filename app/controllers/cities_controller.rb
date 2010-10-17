@@ -1,15 +1,17 @@
 class CitiesController < ApplicationController
+  before_filter :load_country
+  
   # GET /cities
   # GET /cities.xml
   def index
-    @cities = City.all
+    @cities = @country.cities.all
     respond_with(@cities)
   end
 
   # GET /cities/1
   # GET /cities/1.xml
   def show
-    @city = City.find(params[:id])
+    @city = City.where(:slug => params[:id]).first
     respond_with(@city)
   end
 
@@ -48,4 +50,9 @@ class CitiesController < ApplicationController
     @city.destroy
     respond_with(@city)
   end
+  
+  private
+    def load_country
+      @country = Country.where(:code => params[:country_id].try(:upcase)).first
+    end
 end

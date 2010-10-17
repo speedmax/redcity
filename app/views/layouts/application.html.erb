@@ -14,9 +14,6 @@
 		<script type="text/javascript"
 		    src="http://maps.google.com/maps/api/js?sensor=false">
 		</script>
-		
-
-		
 	</head>
 
 	<body>
@@ -27,7 +24,7 @@
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
     <% end %>
 	  </section>
-	  
+
     <header> 
       <section id="user">
         <% if current_user %>
@@ -39,18 +36,74 @@
         <% end %>
       </section>
       
-      <h1>RedCity</h1>
+      <h1>
+          RedCity
+      </h1>
+      <div class="info">
+        <% if @city %>
+          <span class="both country">
+            <%= link_to @city.country.name, country_path(:id => @city.country.to_param) %><br/>
+          </span>
+          <span class="both city">
+            <%= link_to @city.name, city_path(:country_id => @country.to_param, :id => @city.to_param) %>
+          </span>
+        <% elsif @country %>
+          <span class="country">
+            <%= link_to @country.name, country_path(:id => @country.to_param) %>
+          </span>
+        <% end %>
+      </div>
+      <br style="clear: both">
       
-      <%= link_to t(:activities), '/messages' %> | 
-      <%= link_to t(:profiles), '/profiles' %>
+      <div>
+        <%= link_to t(:home), '/' %> | 
+        <%= link_to t(:profiles), '/profiles' %>
+      </div>
     </header>
 
     <section id="hero">
+      <% if (hero = yield(:hero)).present? %>
+        <%= hero %>
+      <% else %>
+        <%= link_to t(:global), '/' %>
+
+        <% if @country %>
+          &raquo; <%= link_to @country.name, country_path(:id => @country.to_param) %>
+        <% end %>
+        
+        <% if @city %>
+          &raquo; <%= link_to @city.name, city_path(:country_id => @country.to_param, :id => @city.to_param) %>
+        <% end %>
+      <% end %>
+      
+      <ul id="view-tabs">
+        <li>
+          <%= link_to local_url(:map => 'no') do %>
+            Activity <br/>
+            <small>Discover what is happening</small>
+          <% end %>
+        </li>
+        
+        <li>
+          <%= link_to local_url(:map => 'yes') do %>
+            Map <br/>
+            <small>Explore what is happening around you</small>
+          <% end %>
+        </li>
+      </ul>
+      
+      <br style="clear:both">
     </section>
     
     <section id="content">
       <%= yield %>
     </section>
+    
+    <section id="sidebar">
+      <%= yield :sidebar %>
+    </section>
+    
+    
     <footer>
       <hr/>
       

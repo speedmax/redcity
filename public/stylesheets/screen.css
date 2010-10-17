@@ -1,5 +1,7 @@
 @import url(less.css);
 
+/*    Generic   */
+
 body {
 	color: rgb(60,60,60);
 	-webkit-tap-highlight-color: rgb(255,255,158);
@@ -8,27 +10,86 @@ body {
 
 #container {
   padding: 0 36px 0;
-	width: 768px;
+	width: 912px;
 	position: relative;
 	margin: 0 auto;
 }
 
 header h1 {
+  line-height: 40px;
+  float: left;
   font-size: 2em;
+}
+
+header .info {
+  width: 200px;
+  margin-left: 20px;
+  float: left;
+}
+
+header .info a, 
+header .info a:hover {
+  color: #333;
+  background: none;
+  text-decoration: none;
+}
+
+header .info span.country {
+  line-height: 2em;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+header .info span.both.country {
+  font-size: 0.7em;
+  line-height: 0.em;
+  padding: 0;
+}
+header .info span.both.city {
+  font-weight: bold;
+  line-height: 1em;
+  font-size: 1.2em;
+  padding: 0;
+  
+}
+
+#hero {
+  background: #114992;
+  color: white;
+  padding: 20px;
+}
+
+#content {
+  width: 650px;
+  margin-right: 24px;
+  float: left;
+}
+
+#sidebar {
+  width: 226px;
+  float: left;
+}
+
+footer {
+  clear: left;
 }
 
 #content h1 {
   font-size: 1.6em;
 }
 
-
 .large, h2 {
   font-size: 1.3em;
 }
 
+
 #user {
   width: 200px;
   float: right;
+}
+
+#user a {
+  line-height: 32px;
 }
 
 #flash {
@@ -41,7 +102,28 @@ header h1 {
 }
 
 
-/*    Activity stream   */
+/*  Hero  */
+#view-tabs li {
+  list-style: none;
+  float: left;
+
+}
+
+#view-tabs li a {
+  display: block;
+  padding: 3px 10px;
+  border: 1px solid #ccc;
+  color: white;
+  font-size: 1.3em;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+#view-tabs li a span {
+  font-size: 0.7em;
+}
+
+/*    Activity stream/Message   */
 
 
 li.activity {
@@ -69,28 +151,57 @@ li.activity .thumb {
 
 li.activity .content {
   float: left;
-  width: 600px;
+  width: 500px;
 }
 
 #new-message {
   border: 1px solid #ccc;
-  margin: ;
   padding: 10px 20px;
   background: #e6f3f8;
-  margin: 20px;
 }
 
 #new-message h2 {
   margin: 0;
+  padding: 0;
 }
+
 #new-message label {
+  display: none;
+}
+
+#new-message.reply label {
+  display: none;
+}
+
+#new-message.reply #message_label {
+  display: none;
+}
+
+#new-message.reply #message_location {
   display: none;
 }
 
 /* Form styles */
 
+label {
+  display: block;
+}
 
 /*  Profiles  */
+
+div.profile {
+  padding:10px;
+  border: 1px solid #ccc;
+}
+div.profile h1 {
+  line-height: 30px;
+}
+
+div.profile .thumb {
+  width: 70px;
+  float: left;
+}
+
 ul.profiles div.follow-user {
   float: right;
 }
