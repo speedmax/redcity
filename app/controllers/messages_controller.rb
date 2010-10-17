@@ -5,24 +5,32 @@ class MessagesController < ApplicationController
   
   def index
     @messages = Message.active.desc(:created_at)
+    
+    if params[:label]
+      @messages = @messages.where(:label => params[:label])
+    end
         
     if params[:country_id]
       @country = Country.find(params[:country_id])
       city_ids = @country.cities.only(:id).map(&:id)
       
-      @messages = @messages.any_in(:city_id => city_ids).paginate(:page => params[:page])
+      @messages = @messages.any_in(:city_id => city_ids)
     end
 
     if params[:city_id]
       @city = City.find(params[:city_id])
-      @messages = @messages.near(:location => @city.location).paginate(:page => params[:page])
+      @messages = @messages.near(:location => @city.location)
     end
-
+    
+    @messages = @messages.paginate(:page => params[:page])
     respond_with @messages
   end
   
   def show
-    respond_with @message = Message.find(params[:id])
+    @message = Message.find(params[:id])
+    @replies = @message.replies.desc(:created_at)
+    
+    respond_with @message
   end
 
   def new

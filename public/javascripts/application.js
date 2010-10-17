@@ -10,7 +10,7 @@ $('li.activity a').each(function() {
   var href = $(this).attr('href');
   if ( urlValid(href)) {
     $(this).addClass('embedable').after(
-      $('<a>', {'class':'expandable', 'title': 'Expand rich content', 'text':' (expand content) ', href:'#' })
+      $('<a>', {'class':'expandable', 'title': 'Expand rich content', 'text':' expand content ', href:'#' })
     );
   }
 })

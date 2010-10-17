@@ -24,6 +24,10 @@ class ApplicationController < ActionController::Base
   end
   
   def current_user
+    logger.info session[:user_id]
+    logger.info cookies[:remember_token]
+    
+    
     @current_user ||= if session[:user_id]
       Profile.find(session[:user_id])
     elsif cookies[:remember_token]

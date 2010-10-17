@@ -13,10 +13,11 @@ class AuthController < ApplicationController
       when 'facebook' then
         Omnisocial::FacebookAccount.find_or_create_from_auth_hash(request.env['rack.auth'])
     end
-  
+
     self.current_user = account
+    logger.info(account.errors)
     
-    if !current_user.setup?
+    if !account.setup?
       flash[:notice] = t(:setup_account)
       redirect_to edit_profile_path(current_user)
     else

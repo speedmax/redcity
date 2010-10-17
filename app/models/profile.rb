@@ -17,6 +17,10 @@ class Profile
 
   index [[ :location, Mongo::GEO2D ]]
 
+  # Scopes
+  scope :individual, where(:type => 'Individual')
+  scope :organization, where(:type => 'Organization')
+  
   # Associations
   embeds_one :address
   embeds_one :login_account, :class_name => 'Omnisocial::LoginAccount'
@@ -132,7 +136,9 @@ class Profile
   end
   
   def update_user_counter
-    self.city.users_count = self.city.users.count
-    self.city.save
+    if self.city
+      self.city.users_count = self.city.users.count
+      self.city.save
+    end
   end
 end

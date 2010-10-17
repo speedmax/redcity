@@ -1,6 +1,5 @@
 
 <div class="header">
-
 <%= @message.profile.name %> posted:
 <ul>
   <%= render @message %>  
@@ -22,6 +21,10 @@
   <% end %>
 
   <ul class="replies">
-      <%= render @message.replies.desc(:created_at) %>  
+    <% if @replies.empty? %>
+      <li>No comments</li>
+    <% else %>
+      <%= render @replies %>  
+    <% end %>
   </ul>
 </div>

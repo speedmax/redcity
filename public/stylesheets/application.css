@@ -1,0 +1,23 @@
+#user {
+  width: 200px;
+  float: right;
+}
+
+#flash {
+  height: 50px;
+}
+
+#flash div {
+  background: #eee;
+  border: 1px solid #ccc;
+}
+
+a.expandable {
+  padding-left: 30px;
+  line-height: 24px;
+  background: url('../images/expand.png') no-repeat 10px;
+}
+
+a.expandable:hover {
+  color: #f13e3e;
+}

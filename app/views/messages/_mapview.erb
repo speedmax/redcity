@@ -1,4 +1,7 @@
 <%= render 'shared/map' %>
+
+<% content_for :js do %>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 <script type="text/javascript">
   function initialize() {
     var latlng = new google.maps.LatLng(-34.397, 150.644);
@@ -7,15 +10,39 @@
       center: latlng,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    var map = new google.maps.Map(document.getElementById("map_canvas"),
+    
+    window.current_map = new google.maps.Map(document.getElementById("map_canvas"),
         myOptions);
+
+    $.getJSON('/messages.json', function(results) {
+
+      $.each(results, function (e) {
+        if (!this.location) return;
+        console.log(this)
+        
+        var loc = this['location'];
+        var position = new google.maps.LatLng(loc[1], loc[0]);
+
+        var infowindow = new google.maps.InfoWindow({
+            content: this.content
+        });
+        var marker = new google.maps.Marker({
+            position: position,
+            map: window.current_map,
+            title: this.content
+        });
+      })
+    });
   }
   initialize();
 </script>
+<% end %>
+
 
 <% sidebar do %>
+
   <h3>Top cities</h3>
-  <ul>
+  <ul class="city-list">
     <%= render City.desc(:users_count).limit(10) %>
   </ul>
 <% end %>

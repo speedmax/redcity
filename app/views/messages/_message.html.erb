@@ -1,24 +1,19 @@
-<li class="activity">
-  <small class="label"><%= message.label %></small>
+<li class="activity comment"> 
+  <a href="#" class="post-btn"><%= message.label %></a> 
 
-  <div class="thumb">
-    <%= image_tag message.profile.picture_url %>
-  </div>
+  <%= image_tag message.profile.picture_url %>
   
-  <div class="content">
-    <h5><%= link_to message.profile.name, message.profile %></h5>
-	
-  	<%= auto_link(message.content) %> </br>	
-  	<small>
-  	  <%= time_ago_in_words(message.created_at) %>
-
-    	<%= link_to t("view"), message_path(message)%>  	  
-    	<%= link_to t("reply"), message_path(message), :anchor => '#new-reply'%>
-    	
-    	<% if message.profile == current_user %>
-    	  <%= link_to t("delete"), message, :method => :delete, :confirm => t(:delete_message_confirm) %>
-    	<% end %>
-  	</small>
-	</div>
-	<br style="clear:both"/>
+  <div class="comment-data"> 
+    <h3><a href="#"><%= link_to message.profile.name, message.profile %></a></h3> 
+    <p class="comment-body">
+      <%= auto_link(message.content) %>
+    </p> 
+    
+    <p class="comment-time"><%= time_ago_in_words(message.created_at) %></p> 
+  	<%= link_to t("view"), message_path(message), :class => 'fav'%>  	  
+  	<%= link_to t("reply"), message_path(message), :anchor => '#new-reply', :class => 'comments'%>
+  	<% if message.profile == current_user %>
+  	  <%= link_to t("delete"), message, :method => :delete, :confirm => t(:delete_message_confirm), :class => 'action' %>
+  	<% end %>
+  </div> 
 </li>

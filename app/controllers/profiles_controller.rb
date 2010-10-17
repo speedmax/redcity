@@ -4,7 +4,15 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.xml
   def index
-    @profiles = Profile.paginate(:page => params[:page])
+    @profiles = Profile.all
+    
+    if params[:only] == 'organization'
+      @profiles =  @profiles.organization
+    elsif params[:only] == 'individual'
+      @profiles = @profiles.individual
+    end
+
+    @profiles = @profiles.paginate(:page => params[:page])
     respond_with @profiles
   end
 

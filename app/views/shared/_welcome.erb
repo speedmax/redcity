@@ -1,0 +1,17 @@
+<p class="intro"> 
+  <strong>RedCity</strong> is a social network emprowers all local Ruby community<br /> around the world using this service to <strong>Organize, Share and Connect.</strong> 
+</p> 
+
+<p class="script-text"> 
+  Discovery what is happening in your RedCity
+</p> 
+
+<% if !current_user? %>
+  <div id="sign_in"> 
+    <h2>One click <a href="#"><strong>Sign Up</strong></a> or <a href="#"><strong>Sign In</strong></a></h2> 
+    <p class="sub">You can use either your Twitter or Facebook account</p> 
+  
+    <a href="/auth/twitter" id="twitter">Twitter</a>  
+    <a href="/auth/facebook" id="facebook">Facebook</a> 
+  </div>  
+<% end %>

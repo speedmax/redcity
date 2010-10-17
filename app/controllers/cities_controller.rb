@@ -13,7 +13,12 @@ class CitiesController < ApplicationController
   def show
     @city = City.where(:slug => params[:id]).first
     
-    @messages = Message.near(:location => @city.location).paginate(:page => params[:page])
+    @messages = Message.active.near(:location => @city.location)
+
+    if params[:label]
+      @messages = @messages.where(:label => params[:label])
+    end
+    @messages = @messages.paginate(:page => params[:page])
     
     respond_with(@city)
   end

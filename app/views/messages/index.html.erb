@@ -18,6 +18,10 @@
   </ul>
   
   <% sidebar do %>
-  
-  <% end %>  
+    <h3>Top cities</h3>
+    <ul class="city-list">
+      <%= render City.desc(:users_count).limit(10) %>
+    </ul>
+  <% end %>
+
 <% end %>

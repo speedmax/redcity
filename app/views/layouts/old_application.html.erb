@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Redcity</title>
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+    <%= stylesheet_link_tag :all %>
+    <%= csrf_meta_tag %>
+
+		<meta name="viewport" content="initial-scale=1.0, width=device-width, maximum-scale=1.0"/>
+	</head>
+
+	<body>
+
+  <div id="container">
+	  <section id="flash">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    <% end %>
+	  </section>
+
+    <header> 
+      <section id="user">
+        <% if current_user %>
+          <%= image_tag(current_user.picture_url) %>
+          <%= link_to current_user.name, profile_path(current_user) %>
+          <%= link_to t(:logout), '/logout' %>
+        <% else %>
+          <%= link_to t(:login_signup), '/login' %>
+        <% end %>
+      </section>
+      
+      <h1>
+          RedCity
+      </h1>
+      <div class="info">
+        <% if @city %>
+          <span class="both country">
+            <%= link_to @city.country.name, country_path(:id => @city.country.to_param) %><br/>
+          </span>
+          <span class="both city">
+            <%= link_to @city.name, city_path(:country_id => @country.to_param, :id => @city.to_param) %>
+          </span>
+        <% elsif @country %>
+          <span class="country">
+            <%= link_to @country.name, country_path(:id => @country.to_param) %>
+          </span>
+        <% end %>
+      </div>
+      <br style="clear: both">
+      
+      <div>
+        <%= link_to t(:home), '/' %> | 
+        <%= link_to t(:profiles), '/profiles' %>
+      </div>
+    </header>
+
+    <section id="hero">
+      <% if (hero = yield(:hero)).present? %>
+        <%= hero %>
+      <% else %>
+        <%= link_to t(:global), '/' %>
+
+        <% if @country %>
+          &raquo; <%= link_to @country.name, country_path(:id => @country.to_param) %>
+        <% end %>
+        
+        <% if @city %>
+          &raquo; <%= link_to @city.name, city_path(:country_id => @country.to_param, :id => @city.to_param) %>
+        <% end %>
+      <% end %>
+      
+      <ul id="view-tabs">
+        <li>
+          <%= link_to local_url(:map => 'no') do %>
+            Activity <br/>
+            <small>Discover what is happening</small>
+          <% end %>
+        </li>
+        
+        <li>
+          <%= link_to local_url(:map => 'yes') do %>
+            Map <br/>
+            <small>Explore what is happening around you</small>
+          <% end %>
+        </li>
+      </ul>
+      
+      <br style="clear:both">
+    </section>
+    
+    <section id="content">
+      <%= yield %>
+    </section>
+    
+    <section id="sidebar">
+      <%= yield :sidebar %>
+    </section>
+    
+    
+    <footer>
+      <hr/>
+      
+      Red City Crew@Railsrumble
+    </footer>
+  </div>
+
+  	<!-- Rails Rumble sash! -->
+    <script type="text/javascript">
+      var rumbleUrl = 'http://railsrumble.com';
+    </script>
+    <script type="text/javascript" src="http://blog.railsrumble.com/javascripts/rumble-r10-sash.js"></script>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+		<%= javascript_include_tag 'jquery.embedly.min', 'rails', 'application' %>
+		
+		<%= yield :js %>
+	</body>
+</html>
