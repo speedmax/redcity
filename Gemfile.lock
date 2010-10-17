@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/TylerRick/geoip-city.git
+  revision: dad8bdb2b8280ff420dec479077320f874ca6391
+  specs:
+    geoip_city (0.2.0)
+
+GIT
   remote: git://github.com/idealian/omnisocial.git
   revision: faee12d396e1ba256894da13ce77dc289635a257
   specs:
@@ -144,6 +150,7 @@ DEPENDENCIES
   bson_ext (= 1.1.1)
   devise (= 1.1.3)
   faker
+  geoip_city!
   graticule
   jquery-rails
   machinist_mongo

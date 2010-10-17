@@ -3,13 +3,20 @@
 <% @profile.setup = true %>
 <%= simple_form_for @profile do |f| %>
   <%= f.input :name %>
-  <%= f.input :location_string, :label => 'Location', :hint => 'Where are you?' %>
+  <%= f.input :slug, :label => 'Handle', :hint => "Unique identifier of your profile" %>
+
+  <%= f.input :location, :label => 'Location', 
+      :hint => 'Where are you? (EX: City, Country)', 
+      :input_html => {
+        :value => @profile.location_string || "#{request.env['GEOIP_CITY']}, #{request.env['GEOIP_COUNTRY']}" 
+        }
+      %>
   <%= f.input :interests, 
     :input_html => {:value => @profile.interests_list}, 
     :hint => "Enter 6 - 12 your personal interests EX: rails, mongo, tdd, rspec" %>
   <%= f.input :about, :as => :text %>
-  
-  <%= f.input :type, :collection => %w(Individual Organization) %>
+
+  <%= f.input :type, :promot => false, :collection => %w(Individual Organization) %>
   
   <!-- <%= f.simple_fields_for @profile.build_address do |form| %>
     <%= form.input :street %>

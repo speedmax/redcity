@@ -5,7 +5,10 @@
 
   <%= link_to 'Edit', edit_country_path(@country) %> |
   <%= link_to 'Back', countries_path %>
-
+  
+  <ul class="activities">
+    <%= render @messages %>
+  </ul>
 
   <% sidebar do %>
     <h3>Cities</h3>

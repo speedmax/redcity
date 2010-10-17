@@ -3,7 +3,12 @@ Redcity::Application.routes.draw do
 
   resources :cities
 
-  resources :messages, :except => [:edit, :update]
+  resources :messages, :except => [:edit, :update] do
+    member do
+      post :reply
+    end
+  end
+  
   resources :profiles do
     member do
       get :follow

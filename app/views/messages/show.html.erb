@@ -8,12 +8,20 @@
 </div>
 
 <div id="reply">
+  <h3>Replies</h3>
+  <% if current_user? %>
   <div id="new-message" class="reply">
     <h2>Reply</h2>
-    <% @message = current_user.messages.build(:reply_to => @message) %>
-    <%= render 'messages/form' %>
+
+    <%= simple_form_for current_user.messages.build, :url => reply_message_path(@message) do |f| %>
+      <%= f.input :content, :as => :text, :input_html => {:rows => 3, :cols => 80 } %>
+      <%= f.input :location, :input_html => {:placeholder => "Specify a location"} %>
+      <%= f.button :submit %>
+    <% end %>
   </div>
-  
+  <% end %>
+
   <ul class="replies">
+      <%= render @message.replies.desc(:created_at) %>  
   </ul>
 </div>

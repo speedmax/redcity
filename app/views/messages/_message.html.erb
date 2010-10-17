@@ -11,8 +11,9 @@
   	<%= auto_link(message.content) %> </br>	
   	<small>
   	  <%= time_ago_in_words(message.created_at) %>
-  	  
-    	<%= link_to t("reply"), message_path(message), :anchor => '#reply'%>
+
+    	<%= link_to t("view"), message_path(message)%>  	  
+    	<%= link_to t("reply"), message_path(message), :anchor => '#new-reply'%>
     	
     	<% if message.profile == current_user %>
     	  <%= link_to t("delete"), message, :method => :delete, :confirm => t(:delete_message_confirm) %>

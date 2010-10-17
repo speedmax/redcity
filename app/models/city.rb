@@ -4,7 +4,8 @@ class City
   field :name
   field :region
   field :location,    :type => Array
-  field :timezone
+  field :area,        :type => Array
+  
   field :users_count, :type => Integer, :default => 0
   field :slug
   
@@ -13,7 +14,8 @@ class City
   
   referenced_in :country
   references_many :followers, :stored_as => :array, :inverse_of => :followings, :class_name => 'Profile'
-  
+  references_many :users, :class_name => 'Profile', :inverse_of => :city, :foreign_key => :city_id
+
   before_save :generate_slug
   
   def generate_slug

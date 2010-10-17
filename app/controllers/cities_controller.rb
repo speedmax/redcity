@@ -12,6 +12,9 @@ class CitiesController < ApplicationController
   # GET /cities/1.xml
   def show
     @city = City.where(:slug => params[:id]).first
+    
+    @messages = Message.near(:location => @city.location).paginate(:page => params[:page])
+    
     respond_with(@city)
   end
 

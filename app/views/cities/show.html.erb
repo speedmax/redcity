@@ -1,10 +1,10 @@
 <% if map_view? %>
   <%= render 'mapview' %>
 <% else %>
-
   <h1><%= @city.name %></h1>
   <p><%= "#{@city.region}, #{@country.name}" %></p>
 
-  <%= link_to 'Edit', edit_city_path(@city) %> |
-  <%= link_to 'Back', cities_path %>
+  <ul class="activities">
+    <%= render @messages %>
+  </ul>
 <% end %>

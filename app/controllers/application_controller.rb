@@ -8,6 +8,20 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
   
+  def self.autocomplete(object, method, options = {})
+    limit = options[:limit] || 10
+    order = options[:order] || "#{method} ASC"
+
+    define_method("autocomplete_#{object}_#{method}") do
+      if params[:term] && !params[:term].empty?
+        object.to_s.camelize.constantize.where(method => /^#{params[:term]}/).limit(limit).asc(method)
+      else
+        items = {}
+      end
+
+      render :json => json_for_autocomplete(items, (options[:display_value] ? options[:display_value] : method))
+    end
+  end
   
   def current_user
     @current_user ||= if session[:user_id]
@@ -28,5 +42,9 @@ class ApplicationController < ActionController::Base
     
     @map_view = cookies[:map] == 'yes'  
   end
-
+  
+  private
+  def json_for_autocomplete(items, method)
+    items.collect {|i| {"id" => i.id, "label" => i.send(method), "value" => i.send(method)}}
+  end
 end

@@ -23,7 +23,6 @@ class Profile
   delegate :login, :name, :picture_url, :account_url, :to => :login_account
 
   referenced_in :city
-  referenced_in :country
   
   references_many :followings, :stored_as => :array, :inverse_of => :followers, :class_name => 'Profile'
   references_many :followers, :stored_as => :array, :inverse_of => :followings, :class_name => 'Profile'
@@ -33,10 +32,12 @@ class Profile
 
   # Validations
   validates_associated :city
-  validates_presence_of :name
+  validates_presence_of :name, :type
+  
+  # callback
+  after_save :update_user_counter
   
   # Location aware
-  
   def location=(location)
     if location.is_a?(Array)
       return self[:location] = location
@@ -46,12 +47,27 @@ class Profile
       location = $1
     end
 
-    if result = Geocode.find(location)
-      self[:location] = result.coordinates
-      self.location_string = "#{result.locality}, #{}"
+    if loc = Geolocation.find(location)
+      
+      country = Country.where(:code => loc.country_code).first
+      city = City.where(:name => loc.city).first
+
+      unless city
+        city = country.cities.create(
+          :country => country,
+          :name => loc.city,
+          :location => loc.coordinates,
+          :region => loc.region,
+          :area => loc.area
+        )      
+      end
+      
+      self.city = city
+      self[:location] = city.location
+      self.location_string = loc.name
     end
   end
-  
+    
   def closest_city
     city = nil
     
@@ -66,7 +82,6 @@ class Profile
         city = City.find(result["results"][0]["obj"]["_id"])
       end
     end
-    
     city
   end
   
@@ -116,4 +131,8 @@ class Profile
     update_attributes(:remember_token => nil) unless new_record?
   end
   
+  def update_user_counter
+    self.city.users_count = self.city.users.count
+    self.city.save
+  end
 end

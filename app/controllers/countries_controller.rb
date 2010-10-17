@@ -10,6 +10,12 @@ class CountriesController < ApplicationController
   # GET /countries/1.xml
   def show
     @country = Country.where(:code => params[:id].upcase).first
+    
+    # country actity
+    @messages = Message.active.any_in(
+      :city_id => @country.cities.only(:id).map(&:id)
+    ).desc(:created_at).paginate(:page => params[:page])
+
     respond_with(@country)
   end
 
