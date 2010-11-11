@@ -13,3 +13,5 @@ en:
   delete_message_confirm: "Are you sure you want to delete this item?"
   view: "View"
   reply: "Reply"
+  delete: "delete"
+  

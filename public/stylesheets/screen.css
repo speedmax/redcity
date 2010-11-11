@@ -407,12 +407,17 @@ h3 {
   border-radius: 0 0 15px 15px;
   font-weight: bold;
 }
-#content a.comments, #content a.share, #content a.fav {
+#content a.comments, #content a.share, #content a.fav, #content a.action {
   color: #6a6a6a;
   padding-left: 22px;
   margin-right: 25px;
   background: url(../images/comment-icons.png) no-repeat 0 2px;
 }
+
+#content a.action {
+  background: none;
+}
+
 #content a.share {
   background-position: 0 -31px;
 }

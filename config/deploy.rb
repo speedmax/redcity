@@ -14,7 +14,7 @@ set :keep_releases, 5
 # Git Settings
 set :scm,           :git
 set :branch,        "master"
-set :repository,    "git@github.com:railsrumble/rr10-team-305.git"
+set :repository,    "git@github.com:idealian/redcity.git"
 set :deploy_via,    :remote_cache
 
 # Uses local instead of remote server keys, good for github ssh key deploy.

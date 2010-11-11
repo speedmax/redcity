@@ -34,3 +34,10 @@ a.expandable:hover {
   line-height: 12px !important;
   margin: 10px 0;
 }
+
+
+#new-message {
+  background: #ffd;
+  border: 1px solid #ccc;
+  padding: 5px 20px;
+}
