@@ -14,11 +14,12 @@ gem "responders"
 gem "will_paginate", "3.0.pre2"
 gem "jquery-rails"
 gem "graticule"
-gem "geoip_city", :git => 'git://github.com/TylerRick/geoip-city.git'
 
 #gem "ruby-debug19", :group => [:test, :development]
 
-gem "rspec-rails", ">= 2.0.0"
-
-gem 'machinist_mongo', :require => 'machinist/mongoid'
-gem "faker"
+group :test do
+	gem "rspec-rails"
+	gem "machinist"
+	gem "remarkable_mongoid"
+	gem 'machinist_mongo', :require => 'machinist/mongoid' # or mongo_mapper
+end
